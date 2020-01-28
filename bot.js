@@ -50,9 +50,15 @@ bot.on('message', message => {
 });
 
 function executeCommand(message, command) {
-    if(command == 'gs' || command == 'gnomesweeper'){
-        message.channel.send(generateGame()).catch(log);
-        return;
+	if(command == 'gs' || command == 'gnomesweeper'){
+		message.channel.send(generateGame()).catch(log);
+		return;
+	}
+	if(command.indexOf('gs') != -1) {
+		x = command.substring(2,5)
+		y = command.substring(5,8)
+		m = command.substring(8)
+		message.channel.send(generateGame(x, y, m, message))
 	}
 }
 
