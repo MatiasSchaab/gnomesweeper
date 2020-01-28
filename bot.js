@@ -36,7 +36,6 @@ bot.on('ready', function (evt) {
 });
 
 const prefix = '!';
-const gnomeEmoji = getEmoji("gnome");
 
 bot.on('message', message => {
 	
@@ -61,6 +60,7 @@ function generateGame() {
 	gameWidth = 8;
 	gameHeight = 8;
 	numMines = Math.round(gameWidth * gameHeight / 5);
+	gnomeEmoji = getEmoji("gnome");
 	
 	// Generate game (2D array sorted [y][x], -1 means a mine, positive number is the amount of neighbouring mines)
 	var game = [];
@@ -142,11 +142,14 @@ function generateGame() {
 
 function getEmoji(emojiName) {
 	const emoji = bot.emojis.find(emoji => emoji.name === emojiName);
+	if(emoji === null)
+		console.log("Emoji:" + emojiName + " not found!");
 	return(`${emoji}`);
 }
 
 // Gets called when you run the `!gnomesweeper` command
 function generateGame(gameWidth, gameHeight, numMines, message) {
+	gnomeEmoji = getEmoji("gnome");
 	
 	// Check game size
 	if (isNaN(gameWidth)) {
