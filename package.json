@@ -1,0 +1,10 @@
+{
+  "name": "Gnomesweeper-Bot",
+  "version": "1.0.0",
+  "description": "I'm a bot that can generate a random Gnomesweeper game using the new spoiler tags, for anyone to play! Use the command \"!gnomesweeper\" or \"!gs\" to generate a game!\n",
+  "main": "bot.js",
+  "author": "RogueFox",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}
